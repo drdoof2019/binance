@@ -71,8 +71,10 @@ order = client.order_limit_sell(
     quantity=2.32,
     price='43.1')
  
-
- 
+# Açık emirleri görmek için
+print(client.get_open_orders())
+# Ben BTC USDT 44k için 15 dolarlık bi alım emri koymuştum. output:
+# [{'symbol': 'BTCUSDT', 'orderId': 5646717137, 'orderListId': -1, 'clientOrderId': 'web_d67e65f762dd47f2bbfb80b6f7fb8261', 'price': '44000.00000000', 'origQty': '0.00034000', 'executedQty': '0.00000000', 'cummulativeQuoteQty': '0.00000000', 'status': 'NEW', 'timeInForce': 'GTC', 'type': 'LIMIT', 'side': 'BUY', 'stopPrice': '0.00000000', 'icebergQty': '0.00000000', 'time': 1619157400518, 'updateTime': 1619157400518, 'isWorking': True, 'origQuoteOrderQty': '0.00000000'}]
  
  
  
