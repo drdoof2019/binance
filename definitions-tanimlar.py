@@ -77,11 +77,26 @@ print(client.get_open_orders())
 # [{'symbol': 'BTCUSDT', 'orderId': 5646717137, 'orderListId': -1, 'clientOrderId': 'web_d67e65f762dd47f2bbfb80b6f7fb8261', 'price': '44000.00000000', 'origQty': '0.00034000', 'executedQty': '0.00000000', 'cummulativeQuoteQty': '0.00000000', 'status': 'NEW', 'timeInForce': 'GTC', 'type': 'LIMIT', 'side': 'BUY', 'stopPrice': '0.00000000', 'icebergQty': '0.00000000', 'time': 1619157400518, 'updateTime': 1619157400518, 'isWorking': True, 'origQuoteOrderQty': '0.00000000'}]
  
  
+ # al limit emri try except içinde
+ try:
+    buy_limit = client.create_order(
+        symbol='ETHUSDT',
+        side='BUY',
+        type='LIMIT',
+        timeInForce='GTC',
+        quantity=100,
+        price=200)
+
+except BinanceAPIException as e:
+    # error handling goes here
+    print(e)
+except BinanceOrderException as e:
+    # error handling goes here
+    print(e)
  
  
- 
- 
- 
+# cancel previous orders
+cancel = client.cancel_order(symbol='ETHUSDT', orderId=buy_limit['orderId'])
  
  
  
